@@ -1,0 +1,27 @@
+<ion-view view-title="new word definitions">
+  <ion-content>
+    <div>
+
+      <label class="item item-input">
+        <input type="text" placeholder="search" ng-model="queryString">
+      </label>
+
+      <button class="button button-outline button-stable button-small" ng-click="sorting = 'word'">sort alphabetically</button>
+      <button class="button button-outline button-stable button-small" ng-click="sorting = 'nused'">sort by # used asc</button>
+      <button class="button button-outline button-stable button-small" ng-click="sorting = '-nused'">sort by # used desc</button>
+
+      <ul class="list">
+        <div class="item item-divider">
+          words
+          <span class="item-note">nused</span>
+        </div>
+        <div ng-repeat="wordObj in words  | orderBy: sorting | filter: queryString">
+          <li class="item">
+            <a ui-sref="app.worddefs({tag: t.tag})">{{wordObj.word}}</a>
+            <span class="item-note">{{wordObj.nused}}</span>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </ion-content>
+</ion-view>

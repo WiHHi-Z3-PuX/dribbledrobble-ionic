@@ -1,0 +1,13 @@
+/* Empty. Add your own CSS if you like */
+em,i{
+  font-style:italic;
+}
+
+.errorText {
+  padding: 2px 0 2px 16px;
+  color: crimson;
+}
+
+a {
+  color: navy;
+}

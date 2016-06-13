@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="item item-divider">
+    <b><a ui-sref="app.word({word: def.word.word})">{{def.word.word}}</a></b>
+  </div>
+  <div class="item item-text-wrap">
+
+    <p>{{def.wordDef}}</p>
+    <p><i>{{def.example}}</i></p>
+
+    <div ng-if="loggedIn">
+      <button class="button button-small button-balanced" ng-click="upvote(def._id, $index)">
+        upvote
+      </button>
+      <button class="button button-small button-assertive" ng-click="downvote(def._id, $index)">
+        downvote
+      </button>
+    </div>
+    <p><b>rating:</b> {{def.rating}}</p>
+    <p><b>tags:</b>
+              <span ng-repeat="tag in def.tags">
+                <a ui-sref="app.worddefs({tag: tag})">{{tag}}</a>
+              </span>
+    </p>
+  </div>
+</div>

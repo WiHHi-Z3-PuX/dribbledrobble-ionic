@@ -1,0 +1,65 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">add new word definition</h1>
+    <div class="buttons">
+      <button class="button" ng-click="closeAddNew()">close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doAddNew()" role="form" name="addNewForm">
+      <div class="list">
+        <label class="item item-input">
+          <!--<span class="input-label">word</span>-->
+          <input type="text"
+                 ng-model="new.word"
+                 name="word"
+                 placeholder="word"
+                 ng-minlength="2"
+                 ng-maxlength="20"
+                 required>
+        </label>
+        <div ng-messages="addNewForm.word.$error" role="alert" class="errorText">
+          <div ng-message="minlength">at least 2 chars long</div>
+          <div ng-message="maxlength">no more than 20 chars</div>
+          <div ng-message="required" ng-show="!addNewForm.word.$pristine">word required</div>
+        </div>
+        <label class="item item-input">
+          <!--<span class="input-label">definition</span>-->
+          <textarea class="form-control"
+                    rows="5" id="worddef"
+                    name="worddef"
+                    placeholder="word definition"
+                    ng-model="new.wordDef"
+                    ng-minlength="30"
+                    ng-maxlength="500"
+                    required></textarea>
+        </label>
+        <div ng-messages="addNewForm.worddef.$error" role="alert" class="errorText">
+          <div ng-message="minlength">at least 30 chars long</div>
+          <div ng-message="maxlength">no more than 500 chars</div>
+          <div ng-message="required" ng-show="!addNewForm.worddef.$pristine">worddef required</div>
+        </div>
+        <label class="item item-input">
+          <!--<span class="input-label">example</span>-->
+          <textarea class="form-control"
+                    rows="4" id="example"
+                    name="example"
+                    placeholder="example"
+                    ng-model="new.example"
+                    ng-maxlength="300"></textarea>
+        </label>
+        <div ng-messages="addNewForm.example.$error" role="alert" class="errorText">
+          <div ng-message="maxlength">no more than 300 chars</div>
+        </div>
+
+        <tags-input ng-model="newTags" id="newTags" name="newTags" min-length="2" max-length="20" placeholder="add new tags">
+          <auto-complete source="loadTagsAutocomplete($query)"></auto-complete>
+        </tags-input>
+
+        <label class="item">
+          <button class="button button-block button-positive" type="submit" ng-disabled="addNewForm.$invalid">submit</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

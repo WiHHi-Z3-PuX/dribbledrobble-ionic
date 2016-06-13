@@ -1,0 +1,56 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">sign up</h1>
+    <div class="buttons">
+      <button class="button" ng-click="closeRegister()">close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doRegister()" role="form" name="registerForm">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">username</span>
+          <input type="text"
+                 ng-model="registration.username"
+                 name="username"
+                 ng-minlength="3"
+                 ng-maxlength="20"
+                 required>
+        </label>
+        <div ng-messages="registerForm.username.$error" role="alert" class="errorText">
+          <div ng-message="duplicate">duplicate</div>
+          <div ng-message="minlength">at least 3 chars long</div>
+          <div ng-message="maxlength">no more than 20 chars</div>
+          <div ng-message="required" ng-show="!registerForm.username.$pristine">username required</div>
+        </div>
+        <label class="item item-input">
+          <span class="input-label">password</span>
+          <input type="password"
+                 ng-model="registration.password"
+                 name="password"
+                 ng-minlength="3"
+                 ng-maxlength="20"
+                 required>
+        </label>
+        <div ng-messages="registerForm.password.$error" role="alert" class="errorText">
+          <div ng-message="minlength">at least 3 chars long</div>
+          <div ng-message="maxlength">no more than 20 chars</div>
+          <div ng-message="required" ng-show="!registerForm.password.$pristine">password required</div>
+        </div>
+        <label class="item item-input">
+          <span class="input-label">email</span>
+          <input type="email"
+                 ng-model="registration.email"
+                 name="email"
+                 required>
+        </label>
+        <div ng-messages="registerForm.email.$error" role="alert" class="errorText">
+          <div ng-message="required" ng-show="!registerForm.email.$pristine">email required</div>
+        </div>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit" ng-disabled="registerForm.$invalid">sign up</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
